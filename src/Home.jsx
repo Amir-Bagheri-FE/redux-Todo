@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo } from './features/todos/Todo-Slice';
+import { addTodo , completeTodo} from './features/todos/Todo-Slice';
 import './Styles.css'
 import { useState } from 'react';
 function Home(){
@@ -16,7 +16,11 @@ function Home(){
             </div>
             <div className='flex flex-col w-full bg-blend-hue'>
             {todo.map(res=>
-            <i className='m-2 p-1.5 bg-amber-200 text-center font-mono text-blue-700'>{res.Task}</i>
+            <div className='flex justify-around items-center m-2 p-1.5 bg-amber-200 text-center font-mono text-blue-700' key={res.id}>
+            <i>{res.Task}</i>
+            <div className='bg-amber-500 p-2 cursor-pointer rounded-md'>{res.completed ? '✔️completed' : '❌not completed'}</div>
+            <input type="checkbox" onClick={()=>{dispatch(completeTodo(res.id))}}/>
+            </div>
             )}
             </div>
         </div>
