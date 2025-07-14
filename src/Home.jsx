@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo , completeTodo} from './features/todos/Todo-Slice';
+import { addTodo , completeTodo , DeleteTodo} from './features/todos/Todo-Slice';
 import './Styles.css'
 import { useState } from 'react';
 function Home(){
@@ -20,6 +20,7 @@ function Home(){
             <i>{res.Task}</i>
             <div className='bg-amber-500 p-2 cursor-pointer rounded-md'>{res.completed ? '✔️completed' : '❌not completed'}</div>
             <input type="checkbox" onClick={()=>{dispatch(completeTodo(res.id))}}/>
+            <button className='bg-red-500 cursor-pointer p-1 rounded-md' onClick={() => {dispatch(DeleteTodo(res.id))}}>🗑️delete this</button>
             </div>
             )}
             </div>
