@@ -24,10 +24,12 @@ function Home(){
             <div className='flex flex-col w-full bg-blend-hue'>
             {todo.map(res=>
             <div className='flex justify-around items-center m-2 p-1.5 bg-amber-200 text-center font-mono text-blue-700' key={res.id}>
-            <i className={`${res.completed ? 'line-through text-green-500' : ''}`}>{res.Task}</i>
-            <div className='bg-amber-500 p-2 rounded-md'>{res.completed ? '✔️completed' : '❌not completed'}</div>
+            <i className={`w-[15%] ${res.completed ? 'line-through text-green-500' : ''}`}>{res.Task}</i>
+             <div className='w-[80%] flex justify-around'>
+            <div className='bg-amber-500 w-50 p-2 rounded-md'>{res.completed ? '✔️completed' : '❌not completed'}</div>
             <input type="checkbox" onClick={()=>{dispatch(completeTodo(res.id))}}/>
             <button className='bg-red-500 cursor-pointer p-1 rounded-md' onClick={() => {dispatch(DeleteTodo(res.id))}}>🗑️delete this</button>
+             </div>
             </div>
             )}
             </div>
